@@ -119,7 +119,7 @@ if __name__ == "__main__":
         metric="test_loss",
         mode="min",
         progress_reporter=reporter,
-        local_dir=str(config["tune_dir"]),
+        storage_path=str(config["tune_dir"]),
         num_samples=50,
         search_alg=search,
         scheduler=scheduler,
