@@ -10,6 +10,7 @@ Then, do the following:
 2. change the remote url to your own repo with `git remote set-url origin MADS-HACK-LASTNAME` where you replace `LASTNAME` with your own last name.
 3. install rye with `curl -sSf https://rye.astral.sh/get | bash` and use python 3.11 as default
 4. run `rye sync` in your repo
+5. You might need to do `sudo apt install clang` on the VM if step 4 fails.
 
 ## The case
 The junior datascientist has been trying to create some machine learning models for a dataset.
