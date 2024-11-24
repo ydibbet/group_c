@@ -12,6 +12,10 @@ Then, do the following:
 4. run `rye sync` in your repo
 5. You might need to do `sudo apt install clang` on the VM if step 4 fails.
 
+To get the data,
+1. `sudo apt install git-lfs`
+2. run `git clone https://gitlab.com/rgrouls1/hackathon-data.git`
+
 ## The case
 The junior datascientist has been trying to create some machine learning models for a dataset.
 He has already setup some experiments and basic models, but the dataset is unbalanced and he hasnt been able to get the performance he wants, especially for the classes that are underrepresented.
