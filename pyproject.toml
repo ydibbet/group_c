@@ -1,0 +1,41 @@
+[project]
+name = "MADS-hackathon"
+version = "0.1.0"
+description = "Code for the mads hackathon"
+authors = [
+    {name = "Raoul Grouls", email = "Raoul.Grouls@han.nl"},
+]
+dependencies = [
+    "mads-datasets>=0.3.14",
+    "mltrainer>=0.1.128",
+    "seaborn>=0.13.1",
+    "hpbandster>=0.7.4",
+    "ConfigSpace>=1.2.1",
+    "mlflow>=2.18",
+    "h5py>=3.12.1",
+    "torchinfo>=1.8.0",
+]
+
+requires-python = ">=3.11,<3.12"
+readme = "README.md"
+license = {text = "MIT"}
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "jupyter>=1.0.0",
+    "ruff>=0.1.13",
+    "mypy>=1.8.0",
+    "isort>=5.13.2",
+    "black>=24.10.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mads_hackathon"]
