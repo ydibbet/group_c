@@ -13,15 +13,12 @@ from mads_hackathon.models import CNN
 from dataclasses import asdict
 import numpy as np
 from mads_hackathon.metrics import caluclate_cfm
-from mltrainer import ReportTypes, Trainer, TrainerSettings # metrics, rnn_models
-# from mltrainer.preprocessors import PaddedPreprocessor
+from mltrainer import ReportTypes, Trainer, TrainerSettings
 from ray import tune
 from ray.tune import CLIReporter
 from ray.tune.search.hyperopt import HyperOptSearch
 from ray.tune.schedulers import AsyncHyperBandScheduler
 
-# SAMPLE_INT = tune.search.sample.Integer
-# SAMPLE_FLOAT = tune.search.sample.Float
 
 def train(config: Dict):
     """
@@ -92,6 +89,9 @@ def train(config: Dict):
         )
     
     # modify the tags when you change them!
+    mlflow.set_tracking_uri("http://145.38.195.42:5002")
+    mlflow.set_experiment("FirstHyperTest")
+    mlflow.start_run()
     mlflow.set_tag("model", "CNN")
     mlflow.set_tag("dataset", "heart2D")
     mlflow.set_tag("dev", config["dev"])
