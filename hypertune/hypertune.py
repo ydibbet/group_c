@@ -111,7 +111,7 @@ def train(config: Dict):
         mlflow.log_metric(f"TP_{i}", tp)
         
 if __name__ == "__main__":
-    NUM_SAMPLES = 10
+    NUM_SAMPLES = 5
     MAX_EPOCHS = 10
     ray.init()
 
