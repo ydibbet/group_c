@@ -127,6 +127,7 @@ class HeartDataset2D:
         self.df = pd.read_parquet(path)
         self.target = target
         _x = self.df.drop("target", axis=1)
+       
         x = torch.tensor(_x.values, dtype=torch.float32)
 
         # original length is 187, which only allows for 11x17 2D tensors

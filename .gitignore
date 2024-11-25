@@ -18,5 +18,7 @@ models/*
 !data/processed/.gitkeep
 notebooks/logs/*
 notebooks/mlruns/*
-
+notebooks/config.toml
+requirements-dev.lock
+requirements.lock
 
