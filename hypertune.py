@@ -14,7 +14,7 @@ from ray.tune.schedulers import AsyncHyperBandScheduler
 from ray.tune.search.hyperopt import HyperOptSearch
 
 SAMPLE_INT = tune.search.sample.Integer
-MAX_EPOCHS = 50
+MAX_EPOCHS = 1
 SAMPLE_FLOAT = tune.search.sample.Float
 
 
@@ -98,9 +98,9 @@ if __name__ == "__main__":
         "output_size": 20,
         "tune_dir": tune_dir,
         "data_dir": data_dir,
-        "hidden_size": tune.randint(16, 128),
-        "dropout": tune.uniform(0.0, 0.3),
-        "num_layers": tune.randint(2, 5),
+        "hidden_size": tune.randint(16, 18),
+        "dropout": 0.2,
+        "num_layers": tune.randint(2, 3),
     }
 
     reporter = CLIReporter()
