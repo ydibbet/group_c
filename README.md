@@ -67,3 +67,6 @@ modeltag, F1scoremicro, F1scoremacro, TP_0, TP_1, TP_2, TP_3, TP_4
 ```
 as column names, with the metrics as the rows, in the `results/output.csv` file.
 
+## snacks
+During the day, we will go to the supermarket to get you some things like fruit, snacks, drinks, etc.
+If you have a request, please add it to this [google sheets list](https://docs.google.com/spreadsheets/d/1sFgZfqkkiA2yp6A98k4UhO9t0Q2RD43gtu-hUztzCBY/edit?usp=sharing) with your name, timestamp (just to time when you write down the request) and the request itself.
