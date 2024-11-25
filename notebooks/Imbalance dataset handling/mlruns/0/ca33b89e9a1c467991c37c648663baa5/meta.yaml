@@ -1,0 +1,15 @@
+artifact_uri: file:///home/svelthuis/Hackathon/group_c/notebooks/Imbalance%20dataset%20handling/mlruns/0/ca33b89e9a1c467991c37c648663baa5/artifacts
+end_time: 1732548961305
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ca33b89e9a1c467991c37c648663baa5
+run_name: legendary-moth-202
+run_uuid: ca33b89e9a1c467991c37c648663baa5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732548958239
+status: 4
+tags: []
+user_id: svelthuis

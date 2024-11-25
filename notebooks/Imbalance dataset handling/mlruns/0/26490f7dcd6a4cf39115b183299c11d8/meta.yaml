@@ -1,0 +1,15 @@
+artifact_uri: file:///home/svelthuis/Hackathon/group_c/notebooks/Imbalance%20dataset%20handling/mlruns/0/26490f7dcd6a4cf39115b183299c11d8/artifacts
+end_time: 1732545707461
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 26490f7dcd6a4cf39115b183299c11d8
+run_name: zealous-shrew-571
+run_uuid: 26490f7dcd6a4cf39115b183299c11d8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732545682829
+status: 3
+tags: []
+user_id: svelthuis

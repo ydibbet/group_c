@@ -1,0 +1,15 @@
+artifact_uri: file:///home/svelthuis/Hackathon/group_c/notebooks/Imbalance%20dataset%20handling/mlruns/0/2b551b826b2744b595dc5bfa7a7f7ba7/artifacts
+end_time: 1732545212978
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2b551b826b2744b595dc5bfa7a7f7ba7
+run_name: bouncy-sponge-331
+run_uuid: 2b551b826b2744b595dc5bfa7a7f7ba7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732545207334
+status: 3
+tags: []
+user_id: svelthuis

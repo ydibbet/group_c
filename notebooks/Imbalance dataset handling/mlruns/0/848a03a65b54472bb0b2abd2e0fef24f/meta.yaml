@@ -1,0 +1,15 @@
+artifact_uri: file:///home/svelthuis/Hackathon/group_c/notebooks/Imbalance%20dataset%20handling/mlruns/0/848a03a65b54472bb0b2abd2e0fef24f/artifacts
+end_time: 1732545707659
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 848a03a65b54472bb0b2abd2e0fef24f
+run_name: dazzling-pig-537
+run_uuid: 848a03a65b54472bb0b2abd2e0fef24f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732545707638
+status: 4
+tags: []
+user_id: svelthuis

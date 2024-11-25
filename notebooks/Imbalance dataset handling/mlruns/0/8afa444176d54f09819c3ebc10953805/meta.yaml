@@ -1,0 +1,15 @@
+artifact_uri: file:///home/svelthuis/Hackathon/group_c/notebooks/Imbalance%20dataset%20handling/mlruns/0/8afa444176d54f09819c3ebc10953805/artifacts
+end_time: 1732545462618
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8afa444176d54f09819c3ebc10953805
+run_name: loud-moth-646
+run_uuid: 8afa444176d54f09819c3ebc10953805
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732545380604
+status: 3
+tags: []
+user_id: svelthuis
