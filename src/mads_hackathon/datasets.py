@@ -150,7 +150,167 @@ class HeartDataset2D:
 
     def __repr__(self) -> str:
         return f"Heartdataset2D (#{len(self)})"
+    
+class HeartDataset2D_balanced:
+    def __init__(
+        self,
+        path: Path,
+        target: str,
+        samplingmethod: str,
+        shape: tuple[int, int] = (16, 12),
+    ) -> None:
+        self.df = pd.read_parquet(path)
+        self.target = target
+        if samplingmethod == 'undersample':
+            grouped = self.df.groupby('target')
+            self.df = grouped.sample(n=grouped.size().min(), replace=False)
+        elif samplingmethod == 'oversample':
+            grouped = self.df.groupby('target')
+            self.df = grouped.sample(n=grouped.size().max(), replace=True)
+        _x = self.df.drop("target", axis=1)
+        x = torch.tensor(_x.values, dtype=torch.float32)
 
+        # original length is 187, which only allows for 11x17 2D tensors
+        # 3*2**6 = 192. This makes it easier to reshape the data
+        # it also makes convolutions / maxpooling more predictable
+        self.x = torch.nn.functional.pad(x, (0, 3 * 2**6 - x.size(1))).reshape(
+            -1, 1, *shape
+        )
+        y = self.df["target"]
+        self.y = torch.tensor(y.values, dtype=torch.int64)
+
+    def __len__(self) -> int:
+        return len(self.y)
+
+    def __getitem__(self, idx: int):
+        return self.x[idx], self.y[idx]
+
+    def to(self, device):
+        self.x = self.x.to(device)
+        self.y = self.y.to(device)
+
+    def __repr__(self) -> str:
+        return f"Heartdataset2D (#{len(self)})"    
+
+class HeartDataset2D_cutoff:
+    def __init__(
+        self,
+        path: Path,
+        target: str,
+        shape: tuple[int, int] = (16, 12),
+    ) -> None:
+        self.df = pd.read_parquet(path)
+        self.target = target
+        _x = self.df.drop("target", axis=1)
+
+        _x = _x.iloc[:, :144]
+        x = torch.tensor(_x.values, dtype=torch.float32)
+
+        # original length is 187, which only allows for 11x17 2D tensors
+        # 3*2**6 = 192. This makes it easier to reshape the data
+        # it also makes convolutions / maxpooling more predictable
+        self.x = torch.nn.functional.pad(x, (0, 3 * 48 - x.size(1))).reshape(
+            -1, 1, *shape
+        )
+        y = self.df["target"]
+        self.y = torch.tensor(y.values, dtype=torch.int64)
+
+    def __len__(self) -> int:
+        return len(self.y)
+
+    def __getitem__(self, idx: int):
+        return self.x[idx], self.y[idx]
+
+    def to(self, device):
+        self.x = self.x.to(device)
+        self.y = self.y.to(device)
+
+    def __repr__(self) -> str:
+        return f"Heartdataset2D (#{len(self)})"
+    
+class HeartDataset2D_balanced_cutoff:
+    def __init__(
+        self,
+        path: Path,
+        target: str,
+        samplingmethod: str,
+        shape: tuple[int, int] = (16, 12),
+    ) -> None:
+        self.df = pd.read_parquet(path)
+        self.target = target
+        if samplingmethod == 'undersample':
+            grouped = self.df.groupby('target')
+            self.df = grouped.sample(n=grouped.size().min(), replace=False)
+        elif samplingmethod == 'oversample':
+            grouped = self.df.groupby('target')
+            self.df = grouped.sample(n=grouped.size().max(), replace=True)
+        _x = self.df.drop("target", axis=1)
+        _x = _x.iloc[:, :144]
+        x = torch.tensor(_x.values, dtype=torch.float32)
+
+        # original length is 187, which only allows for 11x17 2D tensors
+        # 3*2**6 = 192. This makes it easier to reshape the data
+        # it also makes convolutions / maxpooling more predictable
+        self.x = torch.nn.functional.pad(x, (0, 3 * 48 - x.size(1))).reshape(
+            -1, 1, *shape
+        )
+        y = self.df["target"]
+        self.y = torch.tensor(y.values, dtype=torch.int64)
+
+    def __len__(self) -> int:
+        return len(self.y)
+
+    def __getitem__(self, idx: int):
+        return self.x[idx], self.y[idx]
+
+    def to(self, device):
+        self.x = self.x.to(device)
+        self.y = self.y.to(device)
+
+    def __repr__(self) -> str:
+        return f"Heartdataset2D (#{len(self)})"    
+
+class HeartDataset2D_centrallybalanced:
+    def __init__(
+        self,
+        path: Path,
+        target: str,
+        shape: tuple[int, int] = (16, 12),
+    ) -> None:
+        self.df = pd.read_parquet(path)
+        self.target = target
+        t0 = self.df[self.df['target'] == 0.0]
+        t2 = self.df[self.df['target'] == 2.0]
+        t4 = self.df[self.df['target'] == 4.0]
+        t1 = self.df[self.df['target'] == 1.0]
+        t3 = self.df[self.df['target'] == 3.0]
+        t1s = t1.sample(n=t4.shape[0], replace=True)
+        t3s = t3.sample(n=t4.shape[0], replace=True)
+        self.df = pd.concat([t0,t1s,t2,t3s,t4])
+        _x = self.df.drop("target", axis=1)
+        x = torch.tensor(_x.values, dtype=torch.float32)
+
+        # original length is 187, which only allows for 11x17 2D tensors
+        # 3*2**6 = 192. This makes it easier to reshape the data
+        # it also makes convolutions / maxpooling more predictable
+        self.x = torch.nn.functional.pad(x, (0, 3 * 2**6 - x.size(1))).reshape(
+            -1, 1, *shape
+        )
+        y = self.df["target"]
+        self.y = torch.tensor(y.values, dtype=torch.int64)
+
+    def __len__(self) -> int:
+        return len(self.y)
+
+    def __getitem__(self, idx: int):
+        return self.x[idx], self.y[idx]
+
+    def to(self, device):
+        self.x = self.x.to(device)
+        self.y = self.y.to(device)
+
+    def __repr__(self) -> str:
+        return f"Heartdataset2D (#{len(self)})"   
 
 class HeartDataset1D:
     def __init__(
@@ -159,6 +319,7 @@ class HeartDataset1D:
         target: str,
     ) -> None:
         self.df = pd.read_parquet(path)
+        #grouped = self.df.groupby("target")
         self.target = target
         _x = self.df.drop("target", axis=1)
         x = torch.tensor(_x.values, dtype=torch.float32)
@@ -181,3 +342,41 @@ class HeartDataset1D:
 
     def __repr__(self) -> str:
         return f"Heartdataset (len {len(self)})"
+    
+class HeartDataset1D_balanced:
+    def __init__(
+        self,
+        path: Path,
+        target: str,
+        samplingmethod: str,
+    ) -> None:
+        self.df = pd.read_parquet(path)
+        # do undersampling to to balance the classes
+        if samplingmethod == 'undersample':
+            grouped = self.df.groupby('target')
+            self.df = grouped.sample(n=grouped.size().min(), replace=False)
+        elif samplingmethod == 'oversample':
+            grouped = self.df.groupby('target')
+            self.df = grouped.sample(n=grouped.size().max(), replace=True)
+        self.target = target
+        _x = self.df.drop("target", axis=1)
+        x = torch.tensor(_x.values, dtype=torch.float32)
+        # padded to 3*2**6 = 192
+        # again, this helps with reshaping for attention & using heads
+        self.x = torch.nn.functional.pad(x, (0, 3 * 2**6 - x.size(1)))
+        y = self.df["target"]
+        self.y = torch.tensor(y.values, dtype=torch.int64)
+
+    def __len__(self) -> int:
+        return len(self.y)
+
+    def __getitem__(self, idx: int):
+        # (seq_len, channels)
+        return self.x[idx].unsqueeze(1), self.y[idx]
+
+    def to(self, device):
+        self.x = self.x.to(device)
+        self.y = self.y.to(device)
+
+    def __repr__(self) -> str:
+        return f"Heartdataset (len {len(self)})"    

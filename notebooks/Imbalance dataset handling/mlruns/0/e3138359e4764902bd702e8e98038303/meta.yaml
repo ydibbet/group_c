@@ -1,0 +1,15 @@
+artifact_uri: file:///home/svelthuis/Hackathon/group_c/notebooks/Imbalance%20dataset%20handling/mlruns/0/e3138359e4764902bd702e8e98038303/artifacts
+end_time: 1732547856805
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e3138359e4764902bd702e8e98038303
+run_name: aged-perch-862
+run_uuid: e3138359e4764902bd702e8e98038303
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732547772850
+status: 3
+tags: []
+user_id: svelthuis

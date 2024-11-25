@@ -1,0 +1,15 @@
+artifact_uri: file:///home/svelthuis/Hackathon/group_c/notebooks/Imbalance%20dataset%20handling/mlruns/0/763adf2ed1504f44bb1cc9affcc7d59a/artifacts
+end_time: 1732543642630
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 763adf2ed1504f44bb1cc9affcc7d59a
+run_name: luminous-pug-388
+run_uuid: 763adf2ed1504f44bb1cc9affcc7d59a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732543635508
+status: 3
+tags: []
+user_id: svelthuis

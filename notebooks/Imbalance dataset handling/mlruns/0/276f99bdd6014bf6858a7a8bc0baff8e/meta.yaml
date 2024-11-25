@@ -1,0 +1,15 @@
+artifact_uri: file:///home/svelthuis/Hackathon/group_c/notebooks/Imbalance%20dataset%20handling/mlruns/0/276f99bdd6014bf6858a7a8bc0baff8e/artifacts
+end_time: 1732548523999
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 276f99bdd6014bf6858a7a8bc0baff8e
+run_name: debonair-boar-999
+run_uuid: 276f99bdd6014bf6858a7a8bc0baff8e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732548498962
+status: 3
+tags: []
+user_id: svelthuis

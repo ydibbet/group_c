@@ -1,0 +1,15 @@
+artifact_uri: file:///home/svelthuis/Hackathon/group_c/notebooks/Imbalance%20dataset%20handling/mlruns/0/ed39baeab3a34d1783fc8d6225ecfb4d/artifacts
+end_time: 1732544895919
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ed39baeab3a34d1783fc8d6225ecfb4d
+run_name: crawling-slug-337
+run_uuid: ed39baeab3a34d1783fc8d6225ecfb4d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732544853747
+status: 3
+tags: []
+user_id: svelthuis

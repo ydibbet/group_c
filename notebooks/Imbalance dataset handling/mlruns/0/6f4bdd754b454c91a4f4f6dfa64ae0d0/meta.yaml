@@ -1,0 +1,15 @@
+artifact_uri: file:///home/svelthuis/Hackathon/group_c/notebooks/Imbalance%20dataset%20handling/mlruns/0/6f4bdd754b454c91a4f4f6dfa64ae0d0/artifacts
+end_time: 1732545014719
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6f4bdd754b454c91a4f4f6dfa64ae0d0
+run_name: welcoming-bass-467
+run_uuid: 6f4bdd754b454c91a4f4f6dfa64ae0d0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732544972476
+status: 3
+tags: []
+user_id: svelthuis

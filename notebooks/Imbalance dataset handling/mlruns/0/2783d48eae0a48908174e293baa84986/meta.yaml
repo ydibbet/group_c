@@ -1,0 +1,15 @@
+artifact_uri: file:///home/svelthuis/Hackathon/group_c/notebooks/Imbalance%20dataset%20handling/mlruns/0/2783d48eae0a48908174e293baa84986/artifacts
+end_time: 1732545774712
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2783d48eae0a48908174e293baa84986
+run_name: intelligent-boar-168
+run_uuid: 2783d48eae0a48908174e293baa84986
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732545751363
+status: 3
+tags: []
+user_id: svelthuis

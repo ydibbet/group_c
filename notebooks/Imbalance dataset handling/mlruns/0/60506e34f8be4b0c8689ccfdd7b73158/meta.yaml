@@ -1,0 +1,15 @@
+artifact_uri: file:///home/svelthuis/Hackathon/group_c/notebooks/Imbalance%20dataset%20handling/mlruns/0/60506e34f8be4b0c8689ccfdd7b73158/artifacts
+end_time: 1732547983768
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 60506e34f8be4b0c8689ccfdd7b73158
+run_name: bouncy-snail-791
+run_uuid: 60506e34f8be4b0c8689ccfdd7b73158
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732547899612
+status: 3
+tags: []
+user_id: svelthuis
