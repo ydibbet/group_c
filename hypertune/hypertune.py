@@ -126,7 +126,7 @@ if __name__ == "__main__":
     )
 
     config = {
-        "epochs": 1,
+        "epochs": 10,
         "output_size": 20,
         "tune_dir": tune_dir,
         "data_dir": data_dir,
@@ -135,10 +135,10 @@ if __name__ == "__main__":
         "matrixshape": (4,48),
         "batchsize": 64,
         "input_channels": 1,
-        "hidden": 16, # tune.randint(16, 128),
+        "hidden": tune.randint(16, 128),
         "kernel_size": 3, # tune.randint(1, 12),
         "maxpool": 2, # tune.randint(1, 4),
-        "num_layers": 1, # tune.randint(2, 5),
+        "num_layers": tune.randint(2, 5),
         "num_classes": 5, # tune.randint(2, 5),  
     }
     

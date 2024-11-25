@@ -49,45 +49,44 @@ class ConvBlock(nn.Module):
 
 
 class CNN(nn.Module):
-    def __init__(self, config) -> None:
+    def __init__(self, config: dict) -> None:
         super().__init__()
         input_channels = config["input_channels"]
         kernel_size = config["kernel_size"]
         hidden = config["hidden"]
-        # first convolution
-        self.convolutions = nn.ModuleList(
-            [
-                ConvBlock(input_channels, hidden, kernel_size),
-            ]
-        )
-
-        # additional convolutions
+        # First convolution
+        self.convolutions = nn.ModuleList([
+            ConvBlock(input_channels, hidden, kernel_size)
+        ])
+        # Additional convolutions
         pool = config["maxpool"]
         num_maxpools = 0
         for i in range(config["num_layers"]):
-            self.convolutions.extend(
-                [ConvBlock(hidden, hidden, kernel_size), nn.ReLU()]
-            )
-            # every two layers, add a maxpool
+            self.convolutions.extend([
+                ConvBlock(hidden, hidden, kernel_size),
+                nn.ReLU()
+            ])
+            # Every two layers, add a maxpool
             if i % 2 == 0:
                 num_maxpools += 1
                 self.convolutions.append(nn.MaxPool2d(pool, pool))
-
-        # let's try to calculate the size of the linear layer
-        # please note that changing stride/padding will change the logic
+        # Calculate the size of the linear layer
+        # Note: Changing stride/padding will change this logic
         matrix_size = (config["matrixshape"][0] // (pool**num_maxpools)) * (
             config["matrixshape"][1] // (pool**num_maxpools)
         )
         print(f"Calculated matrix size: {matrix_size}")
-        print(f"Caluclated flatten size: {matrix_size * hidden}")
-
+        print(f"Calculated flatten size: {matrix_size * hidden}")
+        # Fully connected layers with dropout and batch normalization
         self.dense = nn.Sequential(
             nn.Flatten(),
             nn.Linear(matrix_size * hidden, hidden),
             nn.ReLU(),
+            nn.Dropout(config["dropout"]),
+            nn.Linear(hidden, hidden),
+            nn.ReLU(),
             nn.Linear(hidden, config["num_classes"]),
         )
-
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         for conv in self.convolutions:
             x = conv(x)
