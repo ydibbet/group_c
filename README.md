@@ -57,6 +57,17 @@ Analyze the results. It is kind of easy to get high accuracy on the biggest clas
 
 Because this is a medical dataset, an we are trying to spot disease, in general it is much more important that you find as much sick people as possible, even if that means you will have more false positives.
 
+## GPU
+In the `pyproject.toml` file, you will find these lines:
+```toml
+[[tool.rye.sources]]
+name = "torch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+```
+
+This is to make the environment on a CPU machine smaller, because torch adds all GPU dependencies (about 2GB) by default.
+However, if you want to use CUDA, please remove these lines.
+
 ## The goal
 1. Store your best models in the `models` folder.
 2. Create a Makefile that runs your best model on the validset. Make sure you set the correct amount of epochs etc, such that the ONLY thing we have to do is run `make run` to get the results.
