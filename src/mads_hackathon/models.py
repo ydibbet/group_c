@@ -49,11 +49,11 @@ class ConvBlock(nn.Module):
 
 
 class CNN(nn.Module):
-    def __init__(self, config: CNNConfig) -> None:
+    def __init__(self, config) -> None:
         super().__init__()
-        input_channels = config.input_channels
-        kernel_size = config.kernel_size
-        hidden = config.hidden
+        input_channels = config["input_channels"]
+        kernel_size = config["kernel_size"]
+        hidden = config["hidden"]
         # first convolution
         self.convolutions = nn.ModuleList(
             [
@@ -62,9 +62,9 @@ class CNN(nn.Module):
         )
 
         # additional convolutions
-        pool = config.maxpool
+        pool = config["maxpool"]
         num_maxpools = 0
-        for i in range(config.num_layers):
+        for i in range(config["num_layers"]):
             self.convolutions.extend(
                 [ConvBlock(hidden, hidden, kernel_size), nn.ReLU()]
             )
@@ -75,8 +75,8 @@ class CNN(nn.Module):
 
         # let's try to calculate the size of the linear layer
         # please note that changing stride/padding will change the logic
-        matrix_size = (config.matrixshape[0] // (pool**num_maxpools)) * (
-            config.matrixshape[1] // (pool**num_maxpools)
+        matrix_size = (config["matrixshape"][0] // (pool**num_maxpools)) * (
+            config["matrixshape"][1] // (pool**num_maxpools)
         )
         print(f"Calculated matrix size: {matrix_size}")
         print(f"Caluclated flatten size: {matrix_size * hidden}")
@@ -85,7 +85,7 @@ class CNN(nn.Module):
             nn.Flatten(),
             nn.Linear(matrix_size * hidden, hidden),
             nn.ReLU(),
-            nn.Linear(hidden, config.num_classes),
+            nn.Linear(hidden, config["num_classes"]),
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
